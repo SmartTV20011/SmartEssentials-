@@ -1,0 +1,2 @@
+# SmartEssentials-
+Minecraft Plugin
