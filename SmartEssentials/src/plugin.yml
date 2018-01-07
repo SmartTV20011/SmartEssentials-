@@ -1,0 +1,48 @@
+name: SmartEssentials
+version: 2.15.0
+main: me.smarttv.smartessentials.main
+author: SmartTV
+description: A complete recode of Smart-Essentials 1.0 it includes many useful commands for players and admins.
+commands: 
+  smartessentials:
+    description: Gets the plugin version with no arguments, with the argument "reload" it will reload the config.
+    aliases: [se]
+  flight:
+    description: Allows to toggle flight mode for yourself or another player.
+    aliases: [fly]
+  heal:
+    description: Allows you to heal yourself or another player.
+    aliases: [medic]
+  feed:
+    description: Allows you to feed yourself or another player.
+    aliases: [food, eat]
+  repair:
+    description: Allows you to repair the item in your hand or another players hand.
+    aliases: [fix]
+  console:
+    description: Sends a command as the console.
+    aliases: [cmd]
+  hat:
+    description: Allows you to put a block on your head or another players head.
+    aliases: [head]
+  getip:
+    description: Allows you to get an ip address of another player.
+    aliases: [ip]
+  sudo:
+    description: Allows you to execute a command as another user or execute a chat message for another player.
+    aliases: [ps]
+  gamemode:
+    description: Allows you to change your gamemode or another players.
+    aliases: [gm]
+  broadcast:
+    description: Allows you to broadcast a message to the whole server.
+    aliases: [bc]
+  god:
+    description: Allows a player to be unkillable.
+    aliases: [godmode]
+  me:
+    description: Allows you to display your action in chat.
+    aliases: [action]
+  kill:
+    description: Allows you to kill another player.
+    aliases: [k]

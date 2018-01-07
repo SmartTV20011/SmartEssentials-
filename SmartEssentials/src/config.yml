@@ -1,0 +1,19 @@
+#===============================================#
+#==============<[SmartEssentials]>==============#
+#============={Configuration File}==============#
+#===============================================#
+#################################################
+#The prefix thats going to be displayed when using
+#the broadcast command.
+#Default "&8[&b&lSmart&a&lEssentials&8]&7 "
+#
+broadcast-prefix: "&8[&b&lSmart&a&lEssentials&8]&7 "
+#################################################
+#The command that allows you to add/delete a permission
+#to a player. (used for /god, etc)
+#if you dont yet have one we recommend PermissionsEX
+#Use these placeholders [$PLAYER$, $PERMISSION$]
+#
+permissions-adding-command: "pex user $PLAYER$ add $PERMISSION$"
+permissions-removing-command: "pex user $PLAYER$ add -$PERMISSION$"
+#################################################
