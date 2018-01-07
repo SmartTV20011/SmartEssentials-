@@ -46,6 +46,7 @@ public class main extends JavaPlugin implements Listener{
 		getCommand("me").setExecutor(new Me());
 		getCommand("kill").setExecutor(new Kill());
 		new GodListener(this);
+		new FileCreation(this);
 	}
 	@Override
 	public void onDisable() {
