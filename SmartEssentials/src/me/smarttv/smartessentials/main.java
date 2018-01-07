@@ -4,21 +4,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.smarttv.smartessentials.commands.Broadcast;
-import me.smarttv.smartessentials.commands.Console;
-import me.smarttv.smartessentials.commands.Feed;
-import me.smarttv.smartessentials.commands.Flight;
-import me.smarttv.smartessentials.commands.Gamemode;
-import me.smarttv.smartessentials.commands.Getip;
-import me.smarttv.smartessentials.commands.God;
-import me.smarttv.smartessentials.commands.Hat;
-import me.smarttv.smartessentials.commands.Heal;
-import me.smarttv.smartessentials.commands.Kill;
-import me.smarttv.smartessentials.commands.Me;
-import me.smarttv.smartessentials.commands.Repair;
-import me.smarttv.smartessentials.commands.SmartEssentials;
-import me.smarttv.smartessentials.commands.Sudo;
-import me.smarttv.smartessentials.events.GodListener;
+import me.smarttv.smartessentials.commands.*;
+import me.smarttv.smartessentials.events.*;
 
 public class main extends JavaPlugin implements Listener{
 	
@@ -60,7 +47,6 @@ public class main extends JavaPlugin implements Listener{
 		getCommand("kill").setExecutor(new Kill());
 		new GodListener(this);
 	}
-	
 	@Override
 	public void onDisable() {
 		getLogger().info("has been disabled.");
