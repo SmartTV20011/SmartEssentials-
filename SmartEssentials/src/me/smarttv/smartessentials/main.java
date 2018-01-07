@@ -28,19 +28,13 @@ public class main extends JavaPlugin implements Listener{
 	  return instance;
 	}
     /* Dev Notes/copies
-     
-	§8[§b§lSmart§a§lEssentials§8]§7
-	
+	ï¿½8[ï¿½bï¿½lSmartï¿½aï¿½lEssentialsï¿½8]ï¿½7
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-	
 	return false;
 	}
-	
 	Commands to add:
 	getip
-	
-	
 	*/
 	
 	@Override
@@ -66,11 +60,9 @@ public class main extends JavaPlugin implements Listener{
 		getCommand("kill").setExecutor(new Kill());
 		new GodListener(this);
 	}
-
+	
 	@Override
 	public void onDisable() {
 		getLogger().info("has been disabled.");
 	}
-	
-	
 }

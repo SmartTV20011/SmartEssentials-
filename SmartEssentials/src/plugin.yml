@@ -1,7 +1,7 @@
 name: SmartEssentials
 version: 2.15.0
 main: me.smarttv.smartessentials.main
-author: SmartTV
+authors: [SmartTV, JHawk0224]
 description: A complete recode of Smart-Essentials 1.0 it includes many useful commands for players and admins.
 commands: 
   smartessentials:
