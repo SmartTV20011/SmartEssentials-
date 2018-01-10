@@ -10,32 +10,31 @@ public class Heal implements CommandExecutor{
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length == 0) {
-			if (sender.hasPermission("smartessentials.heal.own") || sender.hasPermission("smartessentials.heal.other")) {
+			if (sender.hasPermission("smartessentials.heal") || sender.hasPermission("smartessentials.heal.other")) {
 				if (sender instanceof Player) {
 					Player player = (Player) sender;
-					if (player.getHealth() == 20 && player.getFoodLevel() == 20) {
-						sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 You are already healed.");
-					}else{
-						if (player.getHealth() < 20 && player.getFoodLevel() < 20) {
-							player.setHealth(20);
-							player.setFoodLevel(20);
-							sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health and food level has been replenished.");
-						}else{
-							if (player.getHealth() < 20) {
+							if (player.getHealth() < 20 && player.getFoodLevel() < 20) {
 								player.setHealth(20);
-								sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health has been replenished.");
+								player.setFoodLevel(20);
+								player.setFireTicks(0);
+								sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health and hunger has been replenished.");
 							}else{
-								if (player.getFoodLevel() < 20) {
-									player.setFoodLevel(20);
-									sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your food level has been replenished.");
+								if (player.getHealth() < 20) {
+									player.setHealth(20);
+									player.setFireTicks(0);
+									sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health has been replenished.");
 								}else{
-									return false;
+									if (player.getFoodLevel() < 20) {
+										player.setFoodLevel(20);
+										player.setFireTicks(0);
+										sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your hunger has been replenished.");
+									}else{
+										sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 You are already fully healed.");
+									}
 								}
 							}
-						}
-					}
 				}else{
-					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You must be a player to use this command.");
+					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 Too little arguments. Usage: /heal <player>");
 				}
 			}else{
 				sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You don't have permission to use this command.");
@@ -48,53 +47,51 @@ public class Heal implements CommandExecutor{
 					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 " + args[0] + " is not a valid player.");
 				}else{
 					if (player == sender) {
-						if (sender instanceof Player) {
-							player = (Player) sender;
-							if (player.getHealth() == 20 && player.getFoodLevel() == 20) {
-								sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 You are already healed.");
-							}else{
+						player = (Player) sender;
 								if (player.getHealth() < 20 && player.getFoodLevel() < 20) {
 									player.setHealth(20);
 									player.setFoodLevel(20);
-									sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health and food level has been replenished.");
+									player.setFireTicks(0);
+									sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health and hunger has been replenished.");
 								}else{
 									if (player.getHealth() < 20) {
 										player.setHealth(20);
+										player.setFireTicks(0);
 										sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health has been replenished.");
 									}else{
 										if (player.getFoodLevel() < 20) {
 											player.setFoodLevel(20);
-											sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your food level has been replenished.");
+											player.setFireTicks(0);
+											sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your hunger has been replenished.");
 										}else{
-											return false;
+											sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 You are already fully healed.");
 										}
 									}
 								}
-							}
-						}else{
-							sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You must be a player to use this command.");
-						}
 					}else{
-						if (player.getHealth() == 20 && player.getFoodLevel() == 20) {
+						if (player.getHealth() == 20 && player.getFoodLevel() == 20 && player.getFireTicks() == 0) {
 							sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + " is already healed.");
 						}else{
 							if (player.getHealth() < 20 && player.getFoodLevel() < 20) {
 								player.setHealth(20);
 								player.setFoodLevel(20);
-								sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + "'s health and food level have been replenished.");
-								player.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health and food level has been replenished by " + sender.getName() + ".");
+								player.setFireTicks(0);
+								sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + "'s health and hunger have been replenished.");
+								player.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health and hunger has been replenished.");
 							}else{
 								if (player.getHealth() < 20) {
 									player.setHealth(20);
+									player.setFireTicks(0);
 									sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + "'s health has been replenished.");
-									player.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health has been replenished by " + sender.getName() + ".");
+									player.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your health has been replenished.");
 								}else{
 									if (player.getFoodLevel() < 20) {
 										player.setFoodLevel(20);
-										sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + "'s food level has been replenished.");
-										player.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your food level has been replenished by " + sender.getName() + ".");
+										player.setFireTicks(0);
+										sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + "'s hunger has been replenished.");
+										player.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your hunger has been replenished.");
 									}else{
-										return false;
+										sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 That player is already fully healed.");
 									}
 								}
 							}
@@ -102,7 +99,7 @@ public class Heal implements CommandExecutor{
 					}
 				}
 			}else{
-				if (sender.hasPermission("smartessentials.heal.own")){
+				if (sender.hasPermission("smartessentials.heal")){
 					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You can only heal yourself.");
 				}else{
 					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You don't have permission to use this command.");
@@ -117,7 +114,7 @@ public class Heal implements CommandExecutor{
 					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 Too many arguments. Usage: /heal <player>");
 				}
 			}else{
-				if (sender.hasPermission("smartessentials.heal.own")) {
+				if (sender.hasPermission("smartessentials.heal")) {
 					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 Too many arguments. Usage: /heal");
 				}else{
 					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You don't have permission to use this command.");

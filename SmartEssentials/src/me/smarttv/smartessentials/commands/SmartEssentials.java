@@ -3,6 +3,7 @@ package me.smarttv.smartessentials.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+
 import me.smarttv.smartessentials.main;
 
 public class SmartEssentials implements CommandExecutor{

@@ -10,22 +10,27 @@ public class Getip implements CommandExecutor {
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length == 0) {
-			if (sender.hasPermission("smartessentials.check.ip")) {
-				sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Too little arguments. Usage: /getip <player>");
+			if (sender.hasPermission("smartessentials.check.address")) {
+				if (sender instanceof Player) {
+					Player player = (Player) sender;
+					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your ip address is " + player.getAddress());
+				}else{
+					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§c Too little arguments. Usage: /getip <player>");
+				}
 			}else{
 				sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You don't have permission to use this command.");
 			}
 		}
 		if (args.length == 1) {
-			if (sender.hasPermission("smartessentials.check.ip")) {
+			if (sender.hasPermission("smartessentials.check.address")) {
 				Player player = Bukkit.getPlayer(args[0]);
 				if (player == null) {
-					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 " + args[0] + " is not a valid player.");
+					sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§c " + args[0] + " is not a valid player.");
 				}else{
 					if (sender == player) {
 						sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Your ip address is " + player.getAddress());
 					}else{
-						sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + " ip address is " + player.getAddress());
+						sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 " + player.getName() + "'s ip address is " + player.getAddress());
 					}
 				}
 				
@@ -33,7 +38,7 @@ public class Getip implements CommandExecutor {
 		}
 		if (args.length > 1) {
 			if (sender.hasPermission("smartessentials.check.ip")) {
-				sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§7 Too many arguments. Usage: /getip <player>");
+				sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§c Too many arguments. Usage: /getip <player>");
 			}else{
 				sender.sendMessage("§8[§b§lSmart§a§lEssentials§8]§4 You don't have permission to use this command.");
 			}
